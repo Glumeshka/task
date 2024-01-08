@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
+use app\models\SingupForm;
+use app\models\LoginForm;
 
 class TaskController extends Controller
 {
@@ -12,7 +14,40 @@ class TaskController extends Controller
      
     public function actionIndex()
     {
-        return $this->render("index");
+        $this->view->title = 'Вход в систему';
+
+        // $this->view->registerMetaTag([
+        //     'name' => 'keywords',
+        //     'content' => 'ключевики..'
+        // ]);
+        // $this->view->registerMetaTag([
+        //     'name' => 'description',
+        //     'content' => 'описание..'
+        // ]);
+        
+        $modelLogin = new LoginForm();
+        $modelSing = new SingupForm();
+
+        
+        if ($modelLogin->load(Yii::$app->request->post())) {
+            if ($modelLogin->validate()) {
+                debug($modelLogin);
+            } else {
+
+            }
+            
+        }
+
+        if ($modelSing->load(Yii::$app->request->post())) {
+            if ($modelSing->validate()) {
+                debug($modelSing);
+            } else {
+
+            }
+            
+        }
+
+        return $this->render("index", compact('modelLogin', 'modelSing'));
     }
 
     public function actionSignup()
