@@ -11,18 +11,18 @@ use yii\base\Model;
  * @property-read User|null $user
  *
  */
-class SingupForm extends Model
+class SignupForm extends Model
 {
     public $email;
     public $password;
-    public $password2;
+    public $password2 = null;
     
     public function attributeLabels()
     {
         return [
             'email' => 'Почта',
             'password' => 'Пароль',
-            'password2' => 'Ещё раз пароль'
+            'password2' => 'Повторить пароль'
         ];
     }
     /**

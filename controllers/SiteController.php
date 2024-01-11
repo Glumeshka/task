@@ -115,36 +115,4 @@ class SiteController extends Controller
     //         'model' => $model,
     //     ]);
     // }
-
-    /**
-     * Displays goods page.
-     *
-     * @return string
-     */
-    public function actionGoods()
-    {
-        return $this->render('goods');
-    }
-
-    /**
-     * Displays signup page.
-     *
-     * @return string
-     */
-    public function actionSignup()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
-    }
 }
